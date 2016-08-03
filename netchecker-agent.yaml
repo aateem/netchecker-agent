@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: netchecker-agent-hostnet
+  name: netchecker-agent
+spec:
+  template:
+    metadata:
+      name: netchecker-agent
+      labels:
+        app: netchecker-agent
+    spec:
+      containers:
+        - name: netchecker-agent
+          image: 127.0.0.1:31500/netchecker/agent:latest
+          env:
+          imagePullPolicy: Always
+      nodeSelector:
+        netchecker: agent
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: netchecker-agent-hostnet
+  name: netchecker-agent-hostnet
+spec:
+  template:
+    metadata:
+      name: netchecker-agent-hostnet
+      labels:
+        app: netchecker-agent-hostnet
+    spec:
+      hostNetwork: True
+      containers:
+        - name: netchecker-agent
+          image: 127.0.0.1:31500/netchecker/agent:latest
+          env:
+          imagePullPolicy: Always
+      nodeSelector:
+        netchecker: agent
