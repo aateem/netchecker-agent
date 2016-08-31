@@ -15,6 +15,10 @@ spec:
         - name: netchecker-agent
           image: 127.0.0.1:31500/netchecker/agent:latest
           env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           imagePullPolicy: Always
       nodeSelector:
         netchecker: agent
@@ -37,6 +41,10 @@ spec:
         - name: netchecker-agent
           image: 127.0.0.1:31500/netchecker/agent:latest
           env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           imagePullPolicy: Always
       nodeSelector:
         netchecker: agent

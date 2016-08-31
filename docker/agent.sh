@@ -14,6 +14,7 @@ while : ; do
   IPS=`ip -4 a | grep inet`
   PRE_DATA=$(cat <<EOF
 {
+  "podname": "$MY_POD_NAME",
   "hostname": "$HOST",
   "hostdate": "$DATE",
   "resolvconf": "$RESOLV",
@@ -23,6 +24,6 @@ while : ; do
 EOF
 )
   DATA=`echo $PRE_DATA | tr '\n' ' '`
-  curl -i -s --connect-timeout 5 -H 'Content-Type: application/json' -X POST -d "$DATA" http://$SERVICE:$ENDPOINT/$HOST
+  curl -i -s --connect-timeout 5 -H 'Content-Type: application/json' -X POST -d "$DATA" http://$SERVICE:$ENDPOINT/$MY_POD_NAME
   sleep 60
 done
