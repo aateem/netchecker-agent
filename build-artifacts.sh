@@ -3,7 +3,7 @@ set -e
 set -x
 
 DOCKER_REPO="${DOCKER_REPO:-$DOCKER_REGISTRY}"
-BUILD_IMAGE="mcp-netchecker-agent/build"
+BUILD_IMAGE="mcp-netchecker/agent"
 BUILD_IMAGE_TAG="${BUILD_IMAGE_TAG:-$NETCHECKER_VER}"
 BUILD=`git rev-parse --short HEAD`
 
