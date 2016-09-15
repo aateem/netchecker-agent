@@ -10,6 +10,7 @@ BUILD=`git rev-parse --short HEAD`
 NAME="${DOCKER_REPO}/${BUILD_IMAGE}:${BUILD_IMAGE_TAG}"
 
 echo "Building images"
+cd docker
 docker build -t ${NAME}-${BUILD} .
 
 echo "Pushing images"
