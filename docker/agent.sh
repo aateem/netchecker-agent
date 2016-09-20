@@ -25,5 +25,5 @@ EOF
 )
   DATA=$(echo "$PRE_DATA" | tr '\n' ' ')
   curl -i -s --connect-timeout 5 -H 'Content-Type: application/json' -X POST -d "$DATA" "http://$SERVICE:$ENDPOINT/$MY_POD_NAME"
-  sleep 60
+  sleep 30
 done
