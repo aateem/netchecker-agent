@@ -3,6 +3,7 @@
 # For debug:
 #set -x
 
+report_interval=${REPORT_INTERVAL:-60}
 SERVICE='netchecker-service'
 ENDPOINT='8081/api/v1/agents'
 
@@ -19,11 +20,12 @@ while : ; do
   "hostdate": "$DATE",
   "resolvconf": "$RESOLV",
   "nslookup": "$NSLOOKUP",
-  "ips": "$IPS"
+  "ips": "$IPS",
+  "report_interval": "$report_interval"
 }
 EOF
 )
   DATA=$(echo "$PRE_DATA" | tr '\n' ' ')
   curl -i -s --connect-timeout 5 -H 'Content-Type: application/json' -X POST -d "$DATA" "http://$SERVICE:$ENDPOINT/$MY_POD_NAME"
-  sleep 60
+  sleep "$report_interval"
 done

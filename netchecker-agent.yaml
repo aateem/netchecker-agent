@@ -19,6 +19,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: REPORT_INTERVAL
+              value: "60"
           imagePullPolicy: Always
       nodeSelector:
         netchecker: agent
@@ -45,6 +47,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: REPORT_INTERVAL
+              value: "60"
           imagePullPolicy: Always
       nodeSelector:
         netchecker: agent
